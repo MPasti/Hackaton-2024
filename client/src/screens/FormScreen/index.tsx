@@ -1,3 +1,5 @@
+import { MonthlyForm } from "../../components/MonthlyForm";
+
 export function FormScreen() {
-  return <div className="flex"></div>;
+  return <MonthlyForm />;
 }

@@ -8,6 +8,7 @@ import { FormScreen } from "./screens/FormScreen";
 const ToastOptions = {
   style: {
     fontSize: "16px",
+    padding: "16px",
   },
   success: {
     duration: 3000,

@@ -34,5 +34,30 @@ export default {
       },
     },
   },
+  daisyui: {
+    themes: [
+      {
+        mytheme: {
+          primary: "#ffd200",
+          "primary-focus": "#e6bc00",
+          "primary-content": "#ffffff",
+          secondary: "#b2ecff",
+          "secondary-focus": "#89d8e6",
+          "secondary-content": "#000000",
+          accent: "#fbbf24",
+          neutral: "#3d4451",
+          "neutral-focus": "#2a2e37",
+          "neutral-content": "#ffffff",
+          "base-100": "#ffffff",
+          "base-200": "#f9fafb",
+          "base-300": "#f3f4f6",
+          info: "#3abff8",
+          success: "#70e587",
+          warning: "#ffcc00",
+          error: "#ff7171",
+        },
+      },
+    ],
+  },
   plugins: [daisyui],
 };
