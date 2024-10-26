@@ -1,6 +1,7 @@
 
 import type { HttpContext } from '@adonisjs/core/http';
 import Score from '#models/score';
+import { DateTime } from 'luxon';
 
 export default class ScoresController {
 
@@ -28,6 +29,30 @@ export default class ScoresController {
   
   public async store({ request, response }: HttpContext) {
     const scoreData = request.only(['id']); 
+
+    // Verifica o cooldown
+    const lastScore = await Score.query()
+      .where('usuario_id', scoreData.id)
+      .orderBy('dt_questionario', 'desc')
+      .firstOrFail();
+
+    const score = lastScore.serialize()
+
+    const now = DateTime.now().toMillis();
+    const cooldownPeriod = 7 * 24 * 60 * 60 * 1000; // 7 dias em milissegundos
+    const monthCooldownPeriod = 30 * 24 * 60 * 60 * 1000; // 30 dias em milissegundos
+
+    if (lastScore) {
+      const timeSinceLastScore = now - score.dt_questionario.toMillis();
+      
+      if (timeSinceLastScore < cooldownPeriod) {
+        return response.forbidden({ message: 'Você precisa esperar mais antes de enviar outro questionário (7 dias).' });
+      }
+      
+      if (timeSinceLastScore < monthCooldownPeriod) {
+        return response.forbidden({ message: 'Você já enviou um questionário recentemente (30 dias).' });
+      }
+    }
 
     try {
       const score = await Score.create(scoreData);
