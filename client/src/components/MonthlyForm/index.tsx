@@ -95,10 +95,10 @@ export const MonthlyForm = () => {
       <header className="bg-blue-600 text-white p-4 text-center">
         <h1 className="text-xl font-bold">Avaliação de Satisfação</h1>
       </header>
-      <div className="bg-white shadow-md w-full fixed top-16 left-0 px-4 py-1 z-10">
-        <div className="w-full bg-gray-200 rounded-full h-4">
+      <div className="bg-white shadow-md w-full fixed top-24 left-0 px-4 py-1 z-10">
+        <div className="w-full bg-gray-200 rounded-full h-2">
           <div
-            className="bg-blue-600 h-4 rounded-full transition-all duration-500"
+            className="bg-yellow-400 h-2 rounded-full transition-all duration-500"
             style={{ width: `${progresso}%` }}
           />
         </div>

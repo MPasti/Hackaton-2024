@@ -1,7 +1,7 @@
 import { Flame, LogOut } from "lucide-react";
 import { Link } from "react-router-dom";
 
-import imgLogo from '../../../public/logo-happiology.png'
+import imgLogo from "../../assets/logo-happiology.png";
 
 export const Header = () => {
   return (
@@ -27,9 +27,9 @@ export const Header = () => {
               ></path>
             </svg>
           </label>
-          <div className="flex-1 ">
-            <img src={imgLogo} alt="Logo" className="pl-10 w-80 h-auto"/>
-          </div>
+          <Link className="flex-1" to="/">
+            <img src={imgLogo} alt="Logo" className="pl-10 w-80 h-auto" />
+          </Link>
           <div className="flex-none gap-2">
             <label className="swap swap-rotate me-5">
               <input
@@ -55,7 +55,7 @@ export const Header = () => {
           </div>
         </div>
       </div>
-      <div className="drawer-side">
+      <div className="drawer-side z-[9999]">
         <label
           htmlFor="my-drawer"
           aria-label="close sidebar"
@@ -67,7 +67,7 @@ export const Header = () => {
               <div tabIndex={0} role="button" className="rounded-full avatar">
                 <div className="w-10 rounded-full">
                   <img
-                    alt="Imagem Sidebar"
+                    alt="Imagem de Perfil"
                     src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
                   />
                 </div>
@@ -103,10 +103,10 @@ export const Header = () => {
             <a>Questionários</a>
           </li>
         </ul>
-        <div className="flex mt-auto mb-3.5 ps-2 cursor-pointer">
+        <Link className="flex mt-auto mb-3.5 ps-2 cursor-pointer" to="/login">
           <LogOut />
           <p className="ms-2 ms-2">Sair</p>
-        </div>
+        </Link>
       </div>
     </div>
   );
