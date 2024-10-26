@@ -5,6 +5,7 @@ import { LoginScreen } from "./screens/LoginScreen";
 import { HomeScreen } from "./screens/HomeScreen";
 import { Template } from "./components/Template";
 import { FormScreen } from "./screens/FormScreen";
+import { RegisterScreen } from "./screens/RegisterScreen";
 const ToastOptions = {
   style: {
     fontSize: "16px",
@@ -25,9 +26,11 @@ function App() {
         <Route path="/" element={<Template />}>
           <Route index element={<HomeScreen />} />
           <Route path="formulario" element={<FormScreen />} />
+          <Route path="/registrar" element={<RegisterScreen />} />
         </Route>
 
         <Route path="/login" element={<LoginScreen />} />
+        
       </Routes>
     </Router>
   );
