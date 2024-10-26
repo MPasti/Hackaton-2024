@@ -17,6 +17,11 @@ export default class SessionController {
       return response.unauthorized('Invalid credentials')
     }
 
-    return response.ok('autorizado')
+    const token = await User.accessTokens.create(user)
+
+    return response.ok({
+      type: 'bearer',
+      value: token.value!.release(),
+    })
   }
 }

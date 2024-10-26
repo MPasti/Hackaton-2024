@@ -63,12 +63,12 @@ export default class Usuario extends compose(BaseModel, AuthFinder) {
   declare monitorados: relations.HasMany<typeof Usuario>
 
   @hasOne(() => Diario, {
-    foreignKey: 'id_diario', 
+    foreignKey: 'id_diario',
   })
   declare diario: relations.HasOne<typeof Diario>
 
   @hasOne(() => Streak, {
-    foreignKey: 'id_streak', 
+    foreignKey: 'id_streak',
   })
   declare streak: relations.HasOne<typeof Streak>
 
@@ -83,5 +83,9 @@ export default class Usuario extends compose(BaseModel, AuthFinder) {
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   declare updatedAt: DateTime | null
 
-  static accessTokens = DbAccessTokensProvider.forModel(Usuario)
+  static accessTokens = DbAccessTokensProvider.forModel(Usuario, {
+    expiresIn: '30 days', // duração do token
+    prefix: 'oat_', // prefixo do token
+    table: 'auth_access_tokens', // tabela para armazenar tokens
+  })
 }
