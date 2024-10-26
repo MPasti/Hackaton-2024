@@ -1,24 +1,23 @@
 ## Hackaton-2024
 
-#Estrutura do Repositório
+# Estrutura do Repositório
 Este repositório contém diversos artefatos importantes para a documentação e modelagem do software, incluindo diagramas e modelos de negócio. Abaixo está a descrição de cada um dos itens presentes.
 
-1. Business Model Canvas
+# 1. Business Model Canvas
 O Business Model Canvas é uma representação visual do modelo de negócios utilizado para o desenvolvimento deste software. Ele permite visualizar de maneira clara os principais componentes do negócio, como propostas de valor, segmentos de clientes, canais, parcerias, fluxos de receita, entre outros.
+<img src=""/>
 
-![Business Model Canvas Planning Whiteboard in Purple Red Yellow Simple Colorful Style.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/7ee388e8-1f6e-4110-8f40-5f658bf72503/971e2987-c314-4051-bc5c-5b9219045d78/Business_Model_Canvas_Planning_Whiteboard_in_Purple_Red_Yellow_Simple_Colorful_Style.png)
-
-2. Diagrama de Caso de Uso (UML)
+# 2. Diagrama de Caso de Uso (UML)
 O Diagrama de Caso de Uso utiliza a notação UML para descrever as principais interações dos usuários com o sistema. Este diagrama foca nos casos de uso, representando as funcionalidades esperadas do sistema e quem interage com elas.
 
-![uml.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/7ee388e8-1f6e-4110-8f40-5f658bf72503/101572cd-7f2f-485a-90a9-8455e48a6cfe/uml.png)
+<img src=""/>
 
-3. Diagrama BPMN (Business Process Model and Notation)
+# 3. Diagrama BPMN (Business Process Model and Notation)
 O Diagrama BPMN descreve os processos de negócio relacionados ao software de forma gráfica. Ele detalha o fluxo dos processos de negócio, mostrando como as atividades são realizadas e as interações entre os diversos atores envolvidos.
 
 
 
-4. Matriz de Rastreabilidade
+# 4. Matriz de Rastreabilidade
 A Matriz de Rastreabilidade relaciona os requisitos do sistema às regras de negócio. Esse artefato é essencial para garantir que todos os requisitos estejam sendo cumpridos e rastrear a implementação das funcionalidades.
 
 | **ID do Requisito** | **Descrição do Requisito** | **Funcionalidade Relacionada** | **Teste de Validação** | **Componente do Sistema** |
@@ -40,6 +39,6 @@ A Matriz de Rastreabilidade relaciona os requisitos do sistema às regras de neg
 | **RNF07** | Compatibilidade Multi-Dispositivo | Suportar múltiplos dispositivos | Testar o sistema em diferentes dispositivos e navegadores | Sistema de Interface |
 
 
-5. DER (Diagrama Entidade-Relacionamento)
+# 5. DER (Diagrama Entidade-Relacionamento)
 O Diagrama Entidade-Relacionamento (DER) mostra a estrutura do banco de dados, detalhando as entidades e as relações entre elas. Esse diagrama é essencial para entender a modelagem dos dados e como as informações estão conectadas no sistema.
-
+<img src=""/>
