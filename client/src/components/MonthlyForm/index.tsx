@@ -1,6 +1,10 @@
 import { useState, useEffect } from "react";
 import { toast } from "react-hot-toast";
+import Utils from "../../utils";
+import { createUserScore } from "../../services/FormService.ts";
+import { useNavigate } from "react-router-dom";
 
+// Lista de perguntas do formulário
 const perguntas = [
   "Eu não me sinto particularmente satisfeito com o jeito que sou",
   "Sou uma pessoa muito interessada em outras pessoas",
@@ -40,6 +44,9 @@ export const MonthlyForm = () => {
   const [erro, setErro] = useState<string | null>(null);
   const [camposIncompletos, setCamposIncompletos] = useState<number[]>([]);
   const [ultimoToast, setUltimoToast] = useState<number>(0);
+  const [showModal, setShowModal] = useState<boolean>(false);
+  const [dataLimite, setDataLimite] = useState<string>("");
+  const navigate = useNavigate();
 
   const handleChange = (index: number, value: number) => {
     const novasRespostas = [...respostas];
@@ -64,8 +71,26 @@ export const MonthlyForm = () => {
     } else {
       setErro(null);
       setCamposIncompletos([]);
-      console.log("Respostas enviadas:", respostas);
-      alert("Formulário enviado com sucesso!");
+      setShowModal(true);
+
+      const dataFutura = new Date();
+      dataFutura.setMonth(dataFutura.getMonth() + 1);
+      setDataLimite(
+        `${dataFutura.getDate()}/${dataFutura.getMonth() + 1}/${dataFutura.getFullYear()}`,
+      );
+    }
+  };
+
+  const confirmarEnvio = async () => {
+    setShowModal(false);
+    try {
+      const result = Utils.calcularPontuacao(respostas);
+      await createUserScore(result);
+      toast.success("Formulário enviado com sucesso!");
+      navigate("/resultado");
+    } catch (e) {
+      toast.error("Falha ao registrar seus dados. Tente novamente mais tarde!");
+      console.error(e);
     }
   };
 
@@ -104,7 +129,7 @@ export const MonthlyForm = () => {
         </div>
       </div>
 
-      <div className="mt-24 max-w-xl mx-auto bg-white rounded-lg shadow-md p-6">
+      <div className="mt-24 max-w-xl mx-auto p-6">
         <h1 className="text-2xl font-semibold mb-4">Formulário de Avaliação</h1>
         {erro && <p className="text-red-600 mb-4">{erro}</p>}
         <form onSubmit={handleSubmit}>
@@ -112,17 +137,15 @@ export const MonthlyForm = () => {
             {perguntas.map((pergunta, index) => (
               <div
                 key={index}
-                className={`form-control ${
-                  camposIncompletos.includes(index) ? "text-red-500" : ""
-                }`}
+                className="form-control bg-white shadow-md p-12 rounded-xl"
               >
                 <label className="label">{`${index + 1}. ${pergunta}`}</label>
-                <div className="flex justify-around">
+                <div className="flex justify-around mb-12 gap-7 mt-8">
                   {[1, 2, 3, 4, 5, 6].map((value) => (
                     <label key={value} className="cursor-pointer">
                       <input
                         type="radio"
-                        className={`radio ${
+                        className={`radio checked:bg-yellow-400 ${
                           camposIncompletos.includes(index) ? "radio-error" : ""
                         }`}
                         name={`q${index + 1}`}
@@ -134,6 +157,12 @@ export const MonthlyForm = () => {
                     </label>
                   ))}
                 </div>
+                {camposIncompletos.includes(index) && (
+                  <p className="text-red-500 text-sm">
+                    Campo obrigatório não preenchido!
+                  </p>
+                )}
+                <hr />
               </div>
             ))}
           </div>
@@ -144,6 +173,27 @@ export const MonthlyForm = () => {
           </div>
         </form>
       </div>
+
+      {showModal && (
+        <div className="modal modal-open">
+          <div className="modal-box">
+            <h3 className="font-bold text-lg">Confirmar envio</h3>
+            <p className="py-4">
+              Tem certeza de que deseja enviar suas respostas? Você só poderá
+              responder novamente este formulário em 1 mês, no dia: {dataLimite}
+              !
+            </p>
+            <div className="modal-action">
+              <button className="btn" onClick={() => setShowModal(false)}>
+                Cancelar
+              </button>
+              <button className="btn btn-primary" onClick={confirmarEnvio}>
+                Confirmar
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

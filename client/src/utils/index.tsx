@@ -27,4 +27,28 @@ export default class Utils {
     const [year, month, day] = dateString.split("-");
     return `${day}/${month}/${year}`;
   };
+
+  static calcularPontuacao(resposta: Array<number>) {
+    const questoesMantem = [
+      1, 2, 3, 4, 7, 8, 9, 11, 12, 15, 16, 17, 18, 20, 21, 22, 25, 26,
+    ];
+    const totalQuestoes = resposta.length;
+    let soma = 0;
+
+    const pontuacaoAjustada = resposta.map((pontuacao, index) => {
+      if (!questoesMantem.includes(index + 1)) {
+        return 7 - pontuacao;
+      }
+      return pontuacao;
+    });
+
+    soma = pontuacaoAjustada.reduce(
+      (acumulador, valor) => acumulador + valor,
+      0,
+    );
+
+    const media = soma / totalQuestoes;
+
+    return media;
+  }
 }

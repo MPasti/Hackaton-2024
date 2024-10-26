@@ -31,18 +31,21 @@ export const HomeScreen = () => {
           title="Atividades"
           icon={listChecks}
           button="Ver Atividades"
+          route="atividades"
         />
         <HomeCard
           content="Faça anotações sobre seu dia quando quiser. Você faz as regras!"
           title="Meu Diário"
           icon={NotebookPen}
           button="Ver Meu Diário"
+          route="meu-diario"
         />
         <HomeCard
           content="Esse é o OHQ, Questionário de Felicidade de Oxford. Não é um diagnóstico, mas sim, uma autoavaliação!"
           title="Questionário"
           icon={FileQuestion}
           button="Ver Questionário"
+          route="formulario"
         />
       </div>
     </div>
