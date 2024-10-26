@@ -7,6 +7,7 @@ import { DbAccessTokensProvider } from '@adonisjs/auth/access_tokens'
 import * as relations from '@adonisjs/lucid/types/relations'
 import Diario from './diario.js'
 import Streak from './streak.js'
+import ExerciciosCompleto from './exercicios_completo.js'
 
 const AuthFinder = withAuthFinder(() => hash.use('scrypt'), {
   uids: ['email'],
@@ -64,6 +65,11 @@ export default class Usuario extends compose(BaseModel, AuthFinder) {
     foreignKey: 'id_streak', 
   })
   declare streak: relations.HasOne<typeof Streak>
+
+  @hasMany(() => ExerciciosCompleto, {
+    foreignKey: 'usuario_id', // Chave estrangeira na tabela ExercicioCompleto
+  })
+  declare exerciciosCompletos: relations.HasMany<typeof ExerciciosCompleto>;
 
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime
