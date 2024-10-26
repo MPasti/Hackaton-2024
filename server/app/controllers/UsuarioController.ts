@@ -29,7 +29,7 @@ export default class UsuarioController {
   }
 
  
-  public async index({ response }: HttpContext) {
+   async index({ response }: HttpContext) {
     const usuarios = await Usuario.all();
     return response.ok({ success: true, usuarios });
   }

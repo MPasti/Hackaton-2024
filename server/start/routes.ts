@@ -6,78 +6,76 @@
 | The routes file is used for defining the HTTP routes.
 |
 */
-
 import router from '@adonisjs/core/services/router'
+const UsersController = () => import('#controllers/UsuarioController')
+const AdminController = () => import('#controllers/AdminController')
+const DiariosController = () => import('#controllers/DiariosController')
+const EnderecosController = () => import('#controllers/EnderecosController')
+const ExercicioController = () => import('#controllers/ExercicioController')
+const ExerciciosCompletoController = () => import('#controllers/ExerciciosCompletoController')
+const PaginasController = () => import('#controllers/PaginasController')
+const ScoresController = () => import('#controllers/ScoresController')
+const SessionController = () => import('#controllers/SessionController')
+const StreakController = () => import('#controllers/StreakController')
 
+// Rota para a página inicial (opcional)
+router.get('/', async () => {
+  return { message: 'Bem-vindo à API!' };
+});
 
+// Grupo de rotas com prefixo /api
 router.group(() => {
-  router.get('/usuarios', 'usuarios_controller.index');     
-  router.get('/usuarios/:id', 'usuarios_controller.show');  
-  router.post('/usuarios', 'usuarios_controller.store');      
-  router.put('/usuarios/:id', 'usuarios_controller.update');   
-  router.delete('/usuarios/:id', 'usuarios_controller.destroy'); 
-}).prefix('/api'); 
+  router.get('usuarios', [UsersController, 'index']);     
+  router.get('usuarios/:id', [UsersController, 'show']);  
+  router.post('usuarios', [UsersController, 'store']);      
+  router.put('usuarios/:id', [UsersController, 'update']);   
+  router.delete('usuarios/:id', [UsersController, 'destroy']); 
 
-router.group(() => {
-  router.get('/admin', 'admin_controller.index');     
-  router.get('/admin/:id', 'admin_controller.show');  
-  router.post('/admin', 'admin_controller.store');      
-  router.put('/admin/:id', 'admin_controller.update');   
-  router.delete('/admin/:id', 'admin_controller.destroy'); 
-}).prefix('/api'); 
+  router.get('admin', [AdminController, 'index']);     
+  router.get('admin/:id', [AdminController, 'show']);  
+  router.post('admin', [AdminController, 'store']);      
+  router.put('admin/:id', [AdminController, 'update']);   
+  router.delete('admin/:id', [AdminController, 'destroy']); 
 
-router.group(() => {
-  router.get('/endereco', 'enderecos_controller.index');     
-  router.get('/endereco/:id', 'enderecos_controller.show');  
-  router.post('/endereco', 'enderecos_controller.store');      
-  router.put('/endereco/:id', 'enderecos_controller.update');   
-  router.delete('/endereco/:id', 'enderecos_controller.destroy'); 
-}).prefix('/api'); 
+  router.get('endereco', [EnderecosController, 'index']);     
+  router.get('endereco/:id', [EnderecosController, 'show']);  
+  router.post('endereco', [EnderecosController, 'store']);      
+  router.put('endereco/:id', [EnderecosController, 'update']);   
+  router.delete('endereco/:id', [EnderecosController, 'destroy']); 
 
-router.group(() => {
-  router.get('/diario', 'diarios_controller.index');     
-  router.get('/diario/:id', 'diarios_controller.show');  
-  router.post('/diario', 'diarios_controller.store');      
-  router.put('/diario/:id', 'diarios_controller.update');   
-  router.delete('/diario/:id', 'diarios_controller.destroy'); 
-}).prefix('/api'); 
+  router.get('diario', [DiariosController, 'index']);     
+  router.get('diario/:id', [DiariosController, 'show']);  
+  router.post('diario', [DiariosController, 'store']);      
+  router.put('diario/:id', [DiariosController, 'update']);   
+  router.delete('diario/:id', [DiariosController, 'destroy']); 
 
-router.group(() => {
-  router.get('/score', 'scores_controller.index');     
-  router.get('/score/:id', 'scores_controller.show');  
-  router.post('/score', 'scores_controller.store');      
-  router.put('/score/:id', 'scores_controller.update');   
-  router.delete('/score/:id', 'scores_controller.destroy'); 
-}).prefix('/api'); 
+  router.get('score', [ScoresController, 'index']);     
+  router.get('score/:id', [ScoresController, 'show']);  
+  router.post('score', [ScoresController, 'store']);      
+  router.put('score/:id', [ScoresController, 'update']);   
+  router.delete('score/:id', [ScoresController, 'destroy']); 
 
-router.group(() => {
-  router.get('/streak', 'streaks_controller.index');     
-  router.get('/streak/:id', 'streaks_controller.show');  
-  router.post('/streak', 'streaks_controller.store');      
-  router.put('/streak/:id', 'streaks_controller.update');   
-  router.delete('/streak/:id', 'streaks_controller.destroy'); 
-}).prefix('/api'); 
+  router.get('streak', [StreakController, 'index']);     
+  router.get('streak/:id', [StreakController, 'show']);  
+  router.post('streak', [StreakController, 'store']);      
+  router.put('streak/:id', [StreakController, 'update']);   
+  router.delete('streak/:id', [StreakController, 'destroy']); 
 
-router.group(() => {
-  router.get('/exercicio', 'exercicios_controller.index');     
-  router.get('/exercicio/:id', 'exercicios_controller.show');  
-  router.post('/exercicio', 'exercicios_controller.store');      
-  router.put('/exercicio/:id', 'exercicios_controller.update');   
-  router.delete('/exercicio/:id', 'exercicios_controller.destroy'); 
-}).prefix('/api'); 
+  router.get('exercicio', [ExercicioController, 'index']);     
+  router.get('exercicio/:id', [ExercicioController, 'show']);  
+  router.post('exercicio', [ExercicioController, 'store']);      
+  router.put('exercicio/:id', [ExercicioController, 'update']);   
+  router.delete('exercicio/:id', [ExercicioController, 'destroy']); 
 
-router.group(() => {
-  router.get('/exercicio_completo', 'exercicio_completos_controller.index');     
-  router.get('/exercicio/:id', 'exercicio_completos_controller.show');  
-  router.post('/exercicio', 'exercicio_completos_controller.store');      
-  router.put('/exercicio/:id', 'exercicio_completos_controller.update');   
-  router.delete('/exercicio/:id', 'exercicio_completos_controller.destroy'); 
-}).prefix('/api'); 
+  router.get('exercicio_completo', [ExerciciosCompletoController, 'index']);     
+  router.get('exercicio_completo/:id', [ExerciciosCompletoController, 'show']);  
+  router.post('exercicio_completo', [ExerciciosCompletoController, 'store']);      
+  router.put('exercicio_completo/:id', [ExerciciosCompletoController, 'update']);   
+  router.delete('exercicio_completo/:id', [ExerciciosCompletoController, 'destroy']); 
 
-router.group(() => {
-  router.get('/pagina', 'paginas_controller.index');     
-  router.get('/pagina/:id', 'paginas_controller.show');  
-  router.post('/pagina', 'paginas_controller.store');      
-  router.put('/pagina/:id', 'paginas_controller.update');   
-  router.delete('/pagina/:id', 'paginas_controller.destroy'); 
-}).prefix('/api'); 
+  router.get('pagina', [PaginasController, 'index']);     
+  router.get('pagina/:id', [PaginasController, 'show']);  
+  router.post('pagina', [PaginasController, 'store']);      
+  router.put('pagina/:id', [PaginasController, 'update']);   
+  router.delete('pagina/:id', [PaginasController, 'destroy']); 
+}).prefix('api');
