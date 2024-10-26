@@ -26,7 +26,7 @@ export default class ScoresController {
 
     try {
       const score = await Score.create(scoreData);
-      return response.created(score);
+      return response.created({ success: true, message: 'Questionário enviado!', score });
     } catch (error) {
       return response.badRequest({ message: 'Erro ao criar o score', error: error.message });
     }
@@ -61,6 +61,6 @@ export default class ScoresController {
     }
 
     await score.delete();
-    return response.noContent(); 
+    return response.ok({ success: true, message: 'Questionário deletado com sucesso' }); 
   }
 }
