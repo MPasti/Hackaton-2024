@@ -14,6 +14,8 @@ export default class UsuarioController {
       'ocupacao',
       'email',
       'senha',
+      'estado_civil',
+      'renda_mensal',
       'id_monitor', 
     ]);
 
@@ -24,7 +26,7 @@ export default class UsuarioController {
       const usuario = await Usuario.create(userData);
       return response.created(usuario);
     } catch (error) {
-      return response.badRequest({ message: 'Erro ao criar o usuário', error });
+      return response.badRequest({ message: 'Erro ao criar o usuário', error: error.message || error, });
     }
   }
 

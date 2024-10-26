@@ -17,7 +17,7 @@ export default class ExerciciosCompleto extends BaseModel {
   declare usuario: relations.BelongsTo<typeof Usuario>;
 
   @hasMany(() => Exercicio, {
-    foreignKey: 'exercicioCompleto_id', // Chave estrangeira na tabela Exercicio
+    foreignKey: 'exercicio_id', // Chave estrangeira na tabela Exercicio
   })
   declare exercicios: relations.HasMany<typeof Exercicio>;
 

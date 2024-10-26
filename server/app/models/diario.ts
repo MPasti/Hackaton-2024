@@ -24,7 +24,7 @@ export default class Diario extends BaseModel {
   declare qnt_pag:number
 
   @hasOne(() => Usuario, {
-    foreignKey: 'id_usuario', // chave primária no modelo Usuario
+    foreignKey: 'usuario_id', // chave primária no modelo Usuario
   })
   declare usuario: relations.HasOne<typeof Usuario>
 

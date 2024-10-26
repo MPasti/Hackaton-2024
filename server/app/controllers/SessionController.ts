@@ -1,4 +1,4 @@
-import User from '#models/user'
+import User from '#models/usuario'
 import hash from '@adonisjs/core/services/hash'
 import type { HttpContext } from '@adonisjs/core/http'
 
@@ -11,7 +11,7 @@ export default class SessionController {
       return response.unauthorized('Invalid credentials')
     }
 
-    const isPasswordValid = await hash.verify(user.password, password)
+    const isPasswordValid = await hash.verify(user.senha, password)
 
     if (!isPasswordValid) {
       return response.unauthorized('Invalid credentials')

@@ -45,6 +45,12 @@ export default class Usuario extends compose(BaseModel, AuthFinder) {
   @column()
   declare id_monitor: number | null
 
+  @column()
+  declare renda_mensal: number
+
+  @column()
+  declare estado_civil: string
+
   @hasOne(() => Usuario, {
     foreignKey: 'id',
     localKey: 'id_monitor',
