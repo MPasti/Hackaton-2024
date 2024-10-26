@@ -1,13 +1,22 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { login } from "../../auth/Auth.ts";
+import { toast } from "react-hot-toast";
 
 export const LoginScreen = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     console.log("Email:", email, "Password:", password);
+    try {
+      if (await login(email, password)) navigate("/");
+    } catch (e) {
+      toast.error("Falha ao realizar o Login. Tente novamente mais tarde!");
+      console.error(e);
+    }
   };
 
   return (

@@ -15,25 +15,20 @@ export const isAuthenticated = (): boolean => {
   return !!token;
 };
 
-interface LoginResponse {
-  accessToken: string;
-}
-
 export const login = async (
   email: string,
   password: string,
 ): Promise<boolean> => {
   try {
-    const response = await axios.post<LoginResponse>(
-      `${process.env.VITE_API_URL}/login`,
+    const response = await axios.post(
+      `${import.meta.env.VITE_API_URL}/api/login`,
       {
         email,
         password,
       },
     );
-    const { accessToken } = response.data;
-    if (accessToken) {
-      setAuthToken(accessToken);
+    if (response.data?.value) {
+      setAuthToken(response.data?.value);
       return true;
     }
     return false;

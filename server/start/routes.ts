@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 /*
 |--------------------------------------------------------------------------
 | Routes file
@@ -16,7 +15,7 @@ const ExercicioController = () => import('#controllers/ExercicioController')
 const ExerciciosCompletoController = () => import('#controllers/ExerciciosCompletoController')
 const PaginasController = () => import('#controllers/PaginasController')
 const ScoresController = () => import('#controllers/ScoresController')
-//const SessionController = () => import('#controllers/SessionController')
+const SessionController = () => import('#controllers/SessionController')
 const StreakController = () => import('#controllers/StreakController')
 
 // Rota para a página inicial (opcional)
@@ -27,6 +26,8 @@ router.get('/', async () => {
 // Grupo de rotas com prefixo /api
 router
   .group(() => {
+    router.post('login', [SessionController, 'store'])
+
     router.get('usuarios', [UsersController, 'index'])
     router.get('usuarios/:id', [UsersController, 'show'])
     router.post('usuarios', [UsersController, 'store'])

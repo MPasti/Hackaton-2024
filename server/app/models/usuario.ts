@@ -76,7 +76,7 @@ export default class Usuario extends compose(BaseModel, AuthFinder) {
   @hasMany(() => ExerciciosCompleto, {
     foreignKey: 'usuario_id', // Chave estrangeira na tabela ExercicioCompleto
   })
-  declare exerciciosCompletos: relations.HasMany<typeof ExerciciosCompleto>;
+  declare exerciciosCompletos: relations.HasMany<typeof ExerciciosCompleto>
 
   @hasOne(() => Endereco, {
     foreignKey: 'usuario_id',
@@ -87,7 +87,7 @@ export default class Usuario extends compose(BaseModel, AuthFinder) {
   declare createdAt: DateTime
 
   @column.dateTime({ autoCreate: true, autoUpdate: true })
-  declare updatedAt: DateTime | null
+  declare updatedAt: DateTime
 
   static accessTokens = DbAccessTokensProvider.forModel(Usuario, {
     expiresIn: '30 days', // duração do token

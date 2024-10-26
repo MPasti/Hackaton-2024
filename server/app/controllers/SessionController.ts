@@ -1,11 +1,11 @@
-import User from '#models/usuario'
+import Usuario from '#models/usuario'
 import hash from '@adonisjs/core/services/hash'
 import type { HttpContext } from '@adonisjs/core/http'
 
 export default class SessionController {
   async store({ request, response }: HttpContext) {
     const { email, password } = request.only(['email', 'password'])
-    const user = await User.findBy('email', email)
+    const user = await Usuario.findBy('email', email)
 
     if (!user) {
       return response.unauthorized('Invalid credentials')
@@ -17,7 +17,7 @@ export default class SessionController {
       return response.unauthorized('Invalid credentials')
     }
 
-    const token = await User.accessTokens.create(user)
+    const token = await Usuario.accessTokens.create(user)
 
     return response.ok({
       type: 'bearer',
