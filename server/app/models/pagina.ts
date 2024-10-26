@@ -1,10 +1,9 @@
 import { DateTime } from 'luxon'
-import { BaseModel, column, hasOne, hasMany } from '@adonisjs/lucid/orm'
+import { BaseModel, column, belongsTo } from '@adonisjs/lucid/orm'
+import Diario from './diario.js'
 import * as relations from '@adonisjs/lucid/types/relations'
-import Usuario from './usuario.js'
-import Pagina from './pagina.js'
 
-export default class Diario extends BaseModel {
+export default class Pagina extends BaseModel {
   @column({ isPrimary: true })
   declare id: number
 
@@ -13,24 +12,17 @@ export default class Diario extends BaseModel {
 
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   declare updatedAt: DateTime
-
+  
   @column()
   declare nome:string
 
   @column()
   declare dt_criacao:DateTime
-
   @column()
-  declare qnt_pag:number
+  declare diario_id: number; // Chave estrangeira
 
-  @hasOne(() => Usuario, {
-    foreignKey: 'usuario_id', // chave primária no modelo Usuario
-  })
-  declare usuario: relations.HasOne<typeof Usuario>
-
-  @hasMany(() => Pagina, {
+  @belongsTo(() => Diario, {
     foreignKey: 'diario_id', // Chave estrangeira na tabela Pagina
   })
-  declare paginas: relations.HasMany<typeof Pagina>;
-
+  declare diario: relations.BelongsTo<typeof Diario>;
 }

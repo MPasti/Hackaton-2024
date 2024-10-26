@@ -8,15 +8,18 @@ export default class Score extends BaseModel {
   declare id: number
 
   @hasOne(() => Usuario, {
-    foreignKey: 'id_usuario',
+    foreignKey: 'usuario_id',
   })
   declare profile: relations.HasOne<typeof Usuario>
 
   @column()
-  declare pontuacao: number
+  declare quantidade: number
 
   @column()
   declare tipo: string
+
+  @column()
+  declare dt_questionario: DateTime
 
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime
