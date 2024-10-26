@@ -11,12 +11,17 @@ O Business Model Canvas é uma representação visual do modelo de negócios uti
 # 2. Diagrama de Caso de Uso (UML)
 O Diagrama de Caso de Uso utiliza a notação UML para descrever as principais interações dos usuários com o sistema. Este diagrama foca nos casos de uso, representando as funcionalidades esperadas do sistema e quem interage com elas.
 <br>
-<img src="artefatos/USE CASE.png"/>
+<img src="artefatos/USE-CASE.png"/>
 
 # 3. Diagrama BPMN (Business Process Model and Notation)
 O Diagrama BPMN descreve os processos de negócio relacionados ao software de forma gráfica. Ele detalha o fluxo dos processos de negócio, mostrando como as atividades são realizadas e as interações entre os diversos atores envolvidos.
 
-artefatos/BPMN.bpm
+![image](https://github.com/user-attachments/assets/b4e18964-5f20-4302-904b-48565fe2d499)
+![image](https://github.com/user-attachments/assets/30d4ac1d-a303-4e14-bfa1-857ba1ed0723)
+![image](https://github.com/user-attachments/assets/d57997cc-6b3e-4ad5-9f60-ab8483e61df9)
+![image](https://github.com/user-attachments/assets/3a69fcb7-6217-4381-ba73-38bcc79d0781)
+
+<a href="artefatos/BPMN.bpm" target="#"> artefatos/BPMN.bpm </a>
 
 # 4. Matriz de Rastreabilidade
 A Matriz de Rastreabilidade relaciona os requisitos do sistema às regras de negócio. Esse artefato é essencial para garantir que todos os requisitos estejam sendo cumpridos e rastrear a implementação das funcionalidades.
@@ -43,5 +48,5 @@ A Matriz de Rastreabilidade relaciona os requisitos do sistema às regras de neg
 # 5. DER (Diagrama Entidade-Relacionamento) / MER (Modelo Entidade-Relacionamento)
 O Diagrama Entidade-Relacionamento (DER) mostra a estrutura do banco de dados, detalhando as entidades e as relações entre elas. Esse diagrama é essencial para entender a modelagem dos dados e como as informações estão conectadas no sistema. O MER (Modelo Entidade-Relacionamento) é uma técnica de modelagem de dados que descreve de forma abstrata como as informações estão estruturadas em um sistema.
 <br>
-<img src="artefatos/MODELO CONCEITUAL.png.png"/> <img src="artefatos/MODELO LÓGICO.png.png"/> 
+<img src="artefatos/MODELO CONCEITUAL.png"/> <img src="artefatos/MODELO LÓGICO.png"/> 
 
