@@ -1,3 +1,5 @@
+import imgLogo from '../../../public/logo-happiology.png'
+
 export const Header = () => {
   return (
     <div className="drawer">
@@ -22,8 +24,8 @@ export const Header = () => {
               ></path>
             </svg>
           </label>
-          <div className="flex-1">
-            <a className="text-xl ms-5">Happiology</a>
+          <div className="flex-1 ">
+            <img src={imgLogo} alt="Logo" className="pl-10 w-80 h-auto"/>
           </div>
           <div className="flex-none gap-2">
             <label className="swap swap-rotate me-5">
