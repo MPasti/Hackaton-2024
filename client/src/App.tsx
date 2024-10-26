@@ -9,6 +9,7 @@ import { RegisterScreen } from "./screens/RegisterScreen";
 const ToastOptions = {
   style: {
     fontSize: "16px",
+    padding: "16px",
   },
   success: {
     duration: 3000,

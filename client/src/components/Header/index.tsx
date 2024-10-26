@@ -1,3 +1,6 @@
+import { Flame, LogOut } from "lucide-react";
+import { Link } from "react-router-dom";
+
 import imgLogo from '../../../public/logo-happiology.png'
 
 export const Header = () => {
@@ -5,7 +8,7 @@ export const Header = () => {
     <div className="drawer">
       <input id="my-drawer" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content">
-        <div className="navbar bg-base-100 drop-shadow-lg">
+        <div className="navbar fixed bg-base-100 drop-shadow-lg">
           <label
             htmlFor="my-drawer"
             className="btn btn-square btn-ghost drawer-button"
@@ -58,7 +61,7 @@ export const Header = () => {
           aria-label="close sidebar"
           className="drawer-overlay"
         ></label>
-        <ul className="menu bg-base-200 text-base-content min-h-full w-80 p-4">
+        <ul className="menu bg-base-200 text-base-content min-h-full w-80 p-4 bg-white">
           <div className="flex">
             <div className="dropdown dropdown-end">
               <div tabIndex={0} role="button" className="rounded-full avatar">
@@ -70,10 +73,20 @@ export const Header = () => {
                 </div>
               </div>
             </div>
-            <p className="ms-5 text-xl">
-              Olá, <span className="font-bold">Usuário</span>
-            </p>
+            <div className="flex flex-col">
+              <p className="ms-5 text-xl">
+                Olá, <span className="font-bold">Usuário</span>
+              </p>
+              <div className="ms-5 gap-1 flex text-lg">
+                <p>Streak</p>
+                <Flame size={24} />
+              </div>
+            </div>
           </div>
+          <hr className="my-4" />
+          <li>
+            <a>Perfil</a>
+          </li>
           <li>
             <a>Relações</a>
           </li>
@@ -90,6 +103,10 @@ export const Header = () => {
             <a>Questionários</a>
           </li>
         </ul>
+        <div className="flex mt-auto mb-3.5 ps-2 cursor-pointer">
+          <LogOut />
+          <p className="ms-2 ms-2">Sair</p>
+        </div>
       </div>
     </div>
   );

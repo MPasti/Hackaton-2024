@@ -7,6 +7,7 @@ import { DbAccessTokensProvider } from '@adonisjs/auth/access_tokens'
 import * as relations from '@adonisjs/lucid/types/relations'
 import Diario from './diario.js'
 import Streak from './streak.js'
+import ExerciciosCompleto from './exercicios_completo.js'
 
 const AuthFinder = withAuthFinder(() => hash.use('scrypt'), {
   uids: ['email'],
@@ -44,6 +45,12 @@ export default class Usuario extends compose(BaseModel, AuthFinder) {
   @column()
   declare id_monitor: number | null
 
+  @column()
+  declare renda_mensal: number
+
+  @column()
+  declare estado_civil: string
+
   @hasOne(() => Usuario, {
     foreignKey: 'id',
     localKey: 'id_monitor',
@@ -56,14 +63,19 @@ export default class Usuario extends compose(BaseModel, AuthFinder) {
   declare monitorados: relations.HasMany<typeof Usuario>
 
   @hasOne(() => Diario, {
-    foreignKey: 'id_diario', 
+    foreignKey: 'id_diario',
   })
   declare diario: relations.HasOne<typeof Diario>
 
   @hasOne(() => Streak, {
-    foreignKey: 'id_streak', 
+    foreignKey: 'id_streak',
   })
   declare streak: relations.HasOne<typeof Streak>
+
+  @hasMany(() => ExerciciosCompleto, {
+    foreignKey: 'usuario_id', // Chave estrangeira na tabela ExercicioCompleto
+  })
+  declare exerciciosCompletos: relations.HasMany<typeof ExerciciosCompleto>;
 
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime
@@ -71,5 +83,9 @@ export default class Usuario extends compose(BaseModel, AuthFinder) {
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   declare updatedAt: DateTime | null
 
-  static accessTokens = DbAccessTokensProvider.forModel(Usuario)
+  static accessTokens = DbAccessTokensProvider.forModel(Usuario, {
+    expiresIn: '30 days', // duração do token
+    prefix: 'oat_', // prefixo do token
+    table: 'auth_access_tokens', // tabela para armazenar tokens
+  })
 }
