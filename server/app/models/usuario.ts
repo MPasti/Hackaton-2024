@@ -5,6 +5,8 @@ import { BaseModel, column, hasOne, hasMany } from '@adonisjs/lucid/orm'
 import { withAuthFinder } from '@adonisjs/auth/mixins/lucid'
 import { DbAccessTokensProvider } from '@adonisjs/auth/access_tokens'
 import * as relations from '@adonisjs/lucid/types/relations'
+import Diario from './diario.js'
+import Streak from './streak.js'
 
 const AuthFinder = withAuthFinder(() => hash.use('scrypt'), {
   uids: ['email'],
@@ -52,6 +54,16 @@ export default class Usuario extends compose(BaseModel, AuthFinder) {
     foreignKey: 'id_monitor',
   })
   declare monitorados: relations.HasMany<typeof Usuario>
+
+  @hasOne(() => Diario, {
+    foreignKey: 'id_diario', 
+  })
+  declare diario: relations.HasOne<typeof Diario>
+
+  @hasOne(() => Streak, {
+    foreignKey: 'id_streak', 
+  })
+  declare streak: relations.HasOne<typeof Streak>
 
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime
