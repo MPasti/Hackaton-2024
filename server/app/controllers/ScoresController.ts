@@ -9,24 +9,29 @@ export default class ScoresController {
     return response.ok({ success: true, scores });
   }
 
- 
-  public async show({ params, response }: HttpContext) {
-    const score = await Score.find(params.id);
+  public async getScoreData({ params, response }: HttpContext) {
+    const { tipo } = params.tipo; 
+    const usuarioId = params.usuario_id;
 
-    if (!score) {
-      return response.badRequest({ message: 'Score não encontrado' });
+    try {
+
+      const scores = await Score.query()
+        .where('usuario_id', usuarioId)
+        .if(tipo, (query) => query.where('tipo', tipo))
+        .orderBy('dt_questionario', 'asc');
+
+      return response.ok({ success: true, scores });
+    } catch (error) {
+      return response.badRequest({ message: 'Erro ao obter os dados do gráfico', error: error.message });
     }
-
-    return response.ok({ success: true, score });
   }
-
   
   public async store({ request, response }: HttpContext) {
     const scoreData = request.only(['id']); 
 
     try {
       const score = await Score.create(scoreData);
-      return response.created(score);
+      return response.created({ success: true, message: 'Questionário enviado!', score });
     } catch (error) {
       return response.badRequest({ message: 'Erro ao criar o score', error: error.message });
     }
@@ -61,6 +66,6 @@ export default class ScoresController {
     }
 
     await score.delete();
-    return response.noContent(); 
+    return response.ok({ success: true, message: 'Questionário deletado com sucesso' }); 
   }
 }

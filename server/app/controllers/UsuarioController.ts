@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import Usuario from '#models/usuario';
 import hash from '@adonisjs/core/services/hash'
 import type { HttpContext } from '@adonisjs/core/http'
@@ -24,9 +25,9 @@ export default class UsuarioController {
 
     try {
       const usuario = await Usuario.create(userData);
-      return response.created(usuario);
+      return response.created({ success: true, message: 'Usuário criado com sucesso', usuario });
     } catch (error) {
-      return response.badRequest({ message: 'Erro ao criar o usuário', error: error.message || error, });
+      return response.badRequest({success: false, message: 'Erro ao criar o usuário', error: error.message || error, });
     }
   }
 
@@ -64,7 +65,9 @@ export default class UsuarioController {
       'ocupacao',
       'email',
       'senha',
-      'id_monitor',
+      'estado_civil',
+      'renda_mensal',
+      'id_monitor', 
     ]);
 
     if (userData.senha) {
@@ -75,7 +78,7 @@ export default class UsuarioController {
     
     try {
       await usuario.save();
-      return response.ok({ success: true, usuario });
+      return response.ok({ success: true, message: 'Usuário atualizado com sucesso!' ,usuario });
     } catch (error) {
       return response.badRequest({ message: 'Erro ao atualizar o usuário', error });
     }
@@ -89,6 +92,6 @@ export default class UsuarioController {
     }
 
     await usuario.delete();
-    return response.noContent();
+    return response.ok({ success: true, message: 'Usuário deletado com sucesso' });
   }
 }
