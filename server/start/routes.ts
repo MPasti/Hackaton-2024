@@ -51,7 +51,7 @@ router.group(() => {
   router.delete('diario/:id', [DiariosController, 'destroy']); 
 
   router.get('score', [ScoresController, 'index']);     
-  router.get('score/:id', [ScoresController, 'show']);  
+  router.get('score/:id', [ScoresController, 'getScoreData']);  
   router.post('score', [ScoresController, 'store']);      
   router.put('score/:id', [ScoresController, 'update']);   
   router.delete('score/:id', [ScoresController, 'destroy']); 
