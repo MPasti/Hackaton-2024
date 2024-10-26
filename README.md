@@ -1,4 +1,4 @@
-# Hackaton-2024
+# Hackaton - 2024 - Happiology
 
 # Estrutura do Repositório
 Este repositório contém diversos artefatos importantes para a documentação e modelagem do software, incluindo diagramas e modelos de negócio. Abaixo está a descrição de cada um dos itens presentes.
