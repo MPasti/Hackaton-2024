@@ -26,11 +26,11 @@ function App() {
       <Routes>
         <Route path="/" element={<Template />}>
           <Route index element={<HomeScreen />} />
-          <Route path="registro" element={<RegisterScreen />} />
           <Route path="formulario" element={<FormScreen />} />
         </Route>
 
         <Route path="/login" element={<LoginScreen />} />
+        <Route path="/registro" element={<RegisterScreen />} />
       </Routes>
     </Router>
   );

@@ -1,9 +1,12 @@
 import { Flame, LogOut } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import imgLogo from "../../assets/logo-happiology.png";
+import { logout } from "../../auth/Auth.ts";
 
 export const Header = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="drawer">
       <input id="my-drawer" type="checkbox" className="drawer-toggle" />
@@ -75,7 +78,7 @@ export const Header = () => {
             </div>
             <div className="flex flex-col">
               <p className="ms-5 text-xl">
-                Olá, <span className="font-bold">Usuário</span>
+                Olá, <span className="font-bold">Matheus</span>
               </p>
               <div className="ms-5 gap-1 flex text-lg">
                 <p>Streak</p>
@@ -85,28 +88,34 @@ export const Header = () => {
           </div>
           <hr className="my-4" />
           <li>
-            <a>Perfil</a>
+            <Link to="/perfil">Perfil</Link>
           </li>
           <li>
             <a>Relações</a>
           </li>
           <li>
-            <a>Desempenho</a>
+            <Link to="/desempenho">Desempenho</Link>
           </li>
           <li>
-            <a>Atividades</a>
+            <Link to="/atividades">Atividades</Link>
           </li>
           <li>
-            <a>Meu Diário</a>
+            <Link to="/meu-diario">Meu Diário</Link>
           </li>
           <li>
-            <a>Questionários</a>
+            <Link to="/formulario">Questionário</Link>
           </li>
         </ul>
-        <Link className="flex mt-auto mb-3.5 ps-2 cursor-pointer" to="/login">
+        <a
+          className="flex mt-auto mb-3.5 ps-2 cursor-pointer"
+          onClick={() => {
+            logout();
+            navigate("/login");
+          }}
+        >
           <LogOut />
           <p className="ms-2 ms-2">Sair</p>
-        </Link>
+        </a>
       </div>
     </div>
   );

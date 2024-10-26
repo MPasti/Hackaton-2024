@@ -8,6 +8,15 @@ export default class Utils {
     return maskedData;
   }
 
+  static formatCpf(value: string): string {
+    const cleaned = value.replace(/\D/g, "");
+    const match = cleaned.match(/^(\d{3})(\d{3})(\d{3})(\d{2})$/);
+    if (match) {
+      return `${match[1]}.${match[2]}.${match[3]}-${match[4]}`;
+    }
+    return value;
+  }
+
   static formatCPF(cpf: string | undefined) {
     if (!cpf) return;
     const cpfLimpo = cpf.replace(/\D/g, "");
