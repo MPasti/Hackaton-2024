@@ -1,5 +1,5 @@
 import { DateTime } from 'luxon'
-import { BaseModel, column, hasOne } from '@adonisjs/lucid/orm'
+import { BaseModel, column, belongsTo } from '@adonisjs/lucid/orm'
 import Usuario from './usuario.js'
 import * as relations from '@adonisjs/lucid/types/relations'
 
@@ -25,14 +25,20 @@ export default class Endereco extends BaseModel {
   @column()
   declare complemento: string | null
 
+  @column()
+  declare logradouro: string
+
+  @column()
+  declare usuario_id: number 
+
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime
 
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   declare updatedAt: DateTime
 
-  @hasOne(() => Usuario, {
-    foreignKey: 'usuario_id', // chave primária no modelo Usuario
+  @belongsTo(() => Usuario, {
+    foreignKey: 'usuario_id', // Chave estrangeira no Endereco que referencia Usuario
   })
-  declare usuario: relations.HasOne<typeof Usuario>
+  declare usuario: relations.BelongsTo<typeof Usuario>
 }
