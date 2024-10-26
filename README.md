@@ -5,17 +5,18 @@ Este repositório contém diversos artefatos importantes para a documentação e
 
 # 1. Business Model Canvas
 O Business Model Canvas é uma representação visual do modelo de negócios utilizado para o desenvolvimento deste software. Ele permite visualizar de maneira clara os principais componentes do negócio, como propostas de valor, segmentos de clientes, canais, parcerias, fluxos de receita, entre outros.
-<img src=""/>
+<br>
+<img src="artefatos/Business Model Canvas.png"/>
 
 # 2. Diagrama de Caso de Uso (UML)
 O Diagrama de Caso de Uso utiliza a notação UML para descrever as principais interações dos usuários com o sistema. Este diagrama foca nos casos de uso, representando as funcionalidades esperadas do sistema e quem interage com elas.
-
-<img src=""/>
+<br>
+<img src="artefatos/USE CASE.png"/>
 
 # 3. Diagrama BPMN (Business Process Model and Notation)
 O Diagrama BPMN descreve os processos de negócio relacionados ao software de forma gráfica. Ele detalha o fluxo dos processos de negócio, mostrando como as atividades são realizadas e as interações entre os diversos atores envolvidos.
 
-
+artefatos/BPMN.bpm
 
 # 4. Matriz de Rastreabilidade
 A Matriz de Rastreabilidade relaciona os requisitos do sistema às regras de negócio. Esse artefato é essencial para garantir que todos os requisitos estejam sendo cumpridos e rastrear a implementação das funcionalidades.
@@ -39,6 +40,8 @@ A Matriz de Rastreabilidade relaciona os requisitos do sistema às regras de neg
 | **RNF07** | Compatibilidade Multi-Dispositivo | Suportar múltiplos dispositivos | Testar o sistema em diferentes dispositivos e navegadores | Sistema de Interface |
 
 
-# 5. DER (Diagrama Entidade-Relacionamento)
-O Diagrama Entidade-Relacionamento (DER) mostra a estrutura do banco de dados, detalhando as entidades e as relações entre elas. Esse diagrama é essencial para entender a modelagem dos dados e como as informações estão conectadas no sistema.
-<img src=""/>
+# 5. DER (Diagrama Entidade-Relacionamento) / MER (Modelo Entidade-Relacionamento)
+O Diagrama Entidade-Relacionamento (DER) mostra a estrutura do banco de dados, detalhando as entidades e as relações entre elas. Esse diagrama é essencial para entender a modelagem dos dados e como as informações estão conectadas no sistema. O MER (Modelo Entidade-Relacionamento) é uma técnica de modelagem de dados que descreve de forma abstrata como as informações estão estruturadas em um sistema.
+<br>
+<img src="artefatos/MODELO CONCEITUAL.png.png"/> <img src="artefatos/MODELO LÓGICO.png.png"/> 
+
